@@ -1,15 +1,23 @@
-#Summary
+# Angular 1.x + Gulp + Babel + Airship CMS
+
+##Summary
 This demo project demonstrates an Airship project that uses Angular 1.x + Gulp + Babel to render all pages.
 
-#Subdomain
+##Demo
 https://angular-1-gulp-babel.airshipcms.io
 
-#Build Tools
-gulp and babel compiles from outside of compartments (src/) into /compartments/assets/scripts/
+## Development
 
-#How to Run Project
+install dependencies
 
-`yarn install`
-`yarn start`
+```sh
+yarn install
+```
 
-open your browser to localhost:9001/
+```sh
+# from root directory
+yarn start
+```
+
+then dev from `localhost:9001`
+

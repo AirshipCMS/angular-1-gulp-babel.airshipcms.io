@@ -1,0 +1,149 @@
+$red: #C0002C;
+$grey: #D7E3E6;
+$large: (min-width: 769px);
+
+.box {
+  background-color: $grey;
+  color: #67777B;
+  font-weight: bold;
+}
+
+nav {
+  margin: 20px;
+  padding: 0px;
+  border-bottom: 1px solid #E0E9EB;
+
+  @include breakpoint($large) {
+    border: none;
+  }
+}
+
+.nav-right {
+  @include breakpoint($large) {
+    height: 20px;
+    overflow: hidden;
+  }
+}
+
+.github {
+  position: absolute;
+  right: 50px;
+  top: 5px;
+
+  @include breakpoint($large) {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+}
+
+.nav-toggle {
+  height: 2rem;
+  position: absolute;
+  right: 0;
+  top: 15px;
+}
+
+.nav-title {
+  color: $red;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+
+  &:hover {
+    color: $red;
+  }
+}
+
+.body {
+  color: #8A9A9E;
+}
+.body h1,
+.body h2 {
+  color: $red;
+}
+
+/*SETUP*/
+.container {
+  max-width: 960px;
+  letter-spacing: .5px;
+  line-height: 20px;
+  padding: 20px;
+}
+
+.container p {
+  margin-top: 30px;
+}
+
+.summary {
+  text-align: center;
+  background: #C2002E;
+  color: #FFFFFF;
+  max-width: 960px;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 14px;
+  margin-bottom: 30px;
+
+  .title {
+    color: #FFFFFF;
+    margin: 20px;
+  }
+
+  @include breakpoint($large) {
+    padding: 100px;
+    font-size: 20px;
+  }
+}
+
+#airship-logo {
+
+  g, path {
+    fill: #FF8BA9;
+  }
+}
+
+/*ELEMENTS*/
+
+.image {
+  background-color: $grey;
+  padding: 50px;
+}
+
+.card p {
+  margin: 0;
+}
+
+/*ELEMENT*/
+
+.element-details,
+.element-detail-image {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.element {
+  text-align: center;
+
+  @include breakpoint($large) {
+    text-align: left;
+  }
+}
+
+.element-detail-image {
+  width: 100%;
+
+  @include breakpoint($large) {
+    width: auto;
+  }
+}
+
+.element-details {
+  padding: 20px;
+  color: #8A9A9E;
+}
+
+.element-details h4,
+.element-details h1 {
+  color: #8A9A9E;
+}
