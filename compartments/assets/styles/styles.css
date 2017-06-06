@@ -1,58 +1,61 @@
 .box {
   background-color: #D7E3E6;
   color: #67777B;
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 nav {
   margin: 20px;
   padding: 0px;
-  border-bottom: 1px solid #E0E9EB;
-}
+  border-bottom: 1px solid #E0E9EB; }
+  @media (min-width: 769px) {
+    nav {
+      border: none; } }
+
+@media (min-width: 769px) {
+  .nav-right {
+    height: 20px;
+    overflow: hidden; } }
 
 .github {
   position: absolute;
   right: 50px;
-  top: 5px;
-}
+  top: 5px; }
+  @media (min-width: 769px) {
+    .github {
+      position: relative;
+      top: 0;
+      right: 0; } }
 
 .nav-toggle {
   height: 2rem;
   position: absolute;
   right: 0;
-  top: 15px;
-}
+  top: 15px; }
 
 .nav-title {
   color: #C0002C;
   display: inline-block;
   font-size: 15px;
-  font-weight: bold;
-}
-
-.nav-title:hover {
-  color: #C0002C;
-}
+  font-weight: bold; }
+  .nav-title:hover {
+    color: #C0002C; }
 
 .body {
-  color: #8A9A9E;
-}
+  color: #8A9A9E; }
+
 .body h1,
 .body h2 {
-  color: #C0002C;
-}
+  color: #C0002C; }
 
 /*SETUP*/
 .container {
   max-width: 960px;
   letter-spacing: .5px;
   line-height: 20px;
-  padding: 20px;
-}
+  padding: 20px; }
 
 .container p {
-  margin-top: 30px;
-}
+  margin-top: 30px; }
 
 .summary {
   text-align: center;
@@ -60,86 +63,50 @@ nav {
   color: #FFFFFF;
   max-width: 960px;
   border-radius: 5px;
-
-  /*desktop*/
   padding: 20px;
   font-size: 14px;
-  margin-bottom: 30px;
-}
+  margin-bottom: 30px; }
+  .summary .title {
+    color: #FFFFFF;
+    margin: 20px; }
+  @media (min-width: 769px) {
+    .summary {
+      padding: 100px;
+      font-size: 20px; } }
 
-#airship-logo g,
-#airship-logo path {
-  fill: #FF8BA9;
-}
-
-.summary .title {
-  color: #FFFFFF;
-  margin: 20px;
-}
+#airship-logo g, #airship-logo path {
+  fill: #FF8BA9; }
 
 /*ELEMENTS*/
-
 .image {
   background-color: #D7E3E6;
-  padding: 50px;
-}
+  padding: 50px; }
 
 .card p {
-  margin: 0;
-}
+  margin: 0; }
 
 /*ELEMENT*/
-
 .element-details,
 .element-detail-image {
   display: inline-block;
-  vertical-align: top;
-}
+  vertical-align: top; }
 
 .element {
-  text-align: center;
-}
+  text-align: center; }
+  @media (min-width: 769px) {
+    .element {
+      text-align: left; } }
 
 .element-detail-image {
-  width: 100%;
-}
+  width: 100%; }
+  @media (min-width: 769px) {
+    .element-detail-image {
+      width: auto; } }
 
 .element-details {
   padding: 20px;
-  color: #8A9A9E;
-}
+  color: #8A9A9E; }
 
 .element-details h4,
 .element-details h1 {
-  color: #8A9A9E;
-}
-
-@media only screen  and (min-width : 769px) {
-  .summary {
-    padding: 100px;
-    font-size: 20px;
-  }
-
-  nav {
-    border: none;
-  }
-
-  .element {
-    text-align: left;
-  }
-
-  .element-detail-image {
-    width: auto;
-  }
-
-  .nav-right {
-    height: 20px;
-    overflow: hidden;
-  }
-
-  .github {
-    position: relative;
-    top: 0;
-    right: 0;
-  }
-}
+  color: #8A9A9E; }

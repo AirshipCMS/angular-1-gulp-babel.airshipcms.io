@@ -1,7 +1,5 @@
 var gulp = require('gulp'),
   babel = require('gulp-babel'),
-  http = require('http'),
-  st = require('st')
   sass = require('gulp-sass');
   autoprefixer = require('gulp-autoprefixer');
 
@@ -23,6 +21,7 @@ gulp.task('sass', function () {
       browsers: ['last 2 versions'],
       cascade: false
     }))
+    .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./compartments/assets/styles'));
 });
 
@@ -31,4 +30,4 @@ gulp.task('watch', function () {
   gulp.watch('src/*', ['js']);
 });
 
-gulp.task('default', ['watch', 'sass', 'js', 'es6']);
+gulp.task('default', ['watch', 'sass', 'js']);
