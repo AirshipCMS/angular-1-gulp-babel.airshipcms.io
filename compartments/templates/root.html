@@ -1,0 +1,207 @@
+<!-- Example of using a field to create a "setting" for the page -->
+    <div class="root-page {{fields.color_theme}}-theme">
+      <!-- Use double propellers for normal rendering of fields. -->
+      <h1>{{fields.header}} (beta)</h1>
+      <h2>Welcome Developer!</h2>
+      <p>Now that your project has been launched, you can start architecting your project very rapidly. Skim this guide for documentation on how to:</p> 
+      <ul>
+        <li><a href="#admin-portal">Add Pages &amp; Collections to your project</a></li>
+        <li><a href="#airship-cli">Install Airship CLI Tools</a></li>
+        <li><a href="#local-setup">Landing your Project</a></li>
+        <li><a href="#airship-propellers">Render content from the CMS</a></li>
+        <li><a href="#airship-launch">Launching your Project</a></li>
+      </ul>
+
+      <h2 id="admin-portal">Airship CMS Admin Portal</h2>
+      <!-- Note that http://localhost:9001 will not work. You must go to the full url of your site to log in. -->
+      <p>{{{fields.admin_portal_notes}}}</p>
+      <!-- Use triple propellers to render content with html markup. -->
+
+      <h2 id="airship-cli">Airship CLI</h2>
+      <p>Right now, Airship CLI tools are available for Mac &amp; Linux operating systems. We will be releasing Windows CLI tools in the near future. To get started developing locally, you will need the CLI (command line interface) tools installed on your machine.</p>
+      <h3>Method 1: Auto Install</h3>
+      <p>In your Terminal, enter this command and follow any prompts that arise.<br>
+        <code>/bin/sh -c "$(curl -fsS https://install.airshipcms.io)"</code>
+      </p>
+      <h3>Method 2: Manual Install</h3>
+      <p>For full installation instructions you can review the install script at <a href="https://install.airshipcms.io/" target="_blank">https://install.airshipcms.io</a> and proceed with one of the alternative install methods.</p>
+
+      <h2 id="local-setup">Landing &amp; Serving Your Project</h2>
+      <ul class="setup-instructions">
+        <li>Create a local directory for your project.</li>
+        <li>Run:<br>
+          <code>airship login [AIRSHIP SUBDOMAIN]</code>
+        </li>
+        <li>Your airship subdomain is lowercase, no spaces. It can be entered as <span class="code">airship login projectname</span> or <span class="code">airship login projectname.airshipcms.io</span>. Either will work.</li>
+        <li>You will be prompted with:<br>
+          <code>Currently not in an AirshipCMS project<br>
+    Would you like to set the current directory /Users/username/Projects/yourdirectory as the AirshipCMS project root for "yourdomain.airshipcms.io"?<br>
+    Enter [yes,y] or [no,n]</code>
+        </li>
+        <li>Answer "y" to proceed.</li>
+        <li>Enter your login credentials when prompted.</li>
+        <li>Run:<br>
+          <code>airship land</code>
+        </li>
+        <li>You will be asked if you want to download compartments to your project. Answer "y" to proceed. This will download your base project files to your local development directory.</li>
+        <li>Run:<br>
+          <code>airship serve</code>
+        </li>
+        <li>This starts the server that will render all of your project files locally.</li>
+        <li>Open your browser and navigate to http://localhost:9001. The local page should look exactly like this page.</li>
+      </ul>
+
+      <h2 id="airship-propellers">Render Content from the CMS</h2>
+      {{{fields.example_rendering}}}
+
+      <h2 id="airship-launch">Launching Your Project</h2>
+      <ul class="setup-instructions">
+        <li>When you are ready to launch (deploy) your project, run the command:<br>
+          <code>airship launch</code>
+        </li>
+        <li>
+          Follow the prompts and fix your files if any errors arise.
+        </li>
+      </ul>
+
+      <p>Since this is a beta release, please note that you may encounter some issues during launch. We are working on making this process as smooth as possible! For best possible results:</p>
+      <ul class="setup-instructions">
+        {{#each fields.setup_instructions}}
+          <li>{{{caption}}}
+          </li>
+        {{/each}}
+      </ul>
+
+      <p>Make sure your <span class="code">compartments</span> directory structure looks something like this:</p>
+    <pre>
+    compartments
+    ├── airmail
+    ├── assets
+    │   ├── media
+    │   │   ├── logos
+    │   │   │   ├── large-logo.png
+    │   │   │   └── small-logo.png
+    │   │   └── repeating-bg.png
+    │   ├── scripts
+    │   │   └── app.js
+    │   └── styles
+    │       ├── account.css
+    │       └── styles.css
+    ├── layouts
+    │   └── application.html
+    ├── partials
+    └── templates
+        └── root.html
+    </pre>
+
+    <!-- 
+      ** ADVANCED STRUCTURE **
+    -->
+
+    <!--
+    <pre>
+    compartments
+    .
+    ├── airmail
+    │   ├── receipt.html
+    │   └── shipment.html
+    ├── assets
+    │   ├── media
+    │   │   ├── logos
+    │   │   │   ├── large-logo.png
+    │   │   │   └── small-logo.png
+    │   │   └── bg.png
+    │   ├── scripts
+    │   │   ├── app.js
+    │   │   └──account.js
+    │   └── styles
+    │       ├── account.css
+    │       └── styles.css
+    ├── layouts
+    │   ├── airmail.html
+    │   └── application.html
+    ├── partials
+    │   └── (empty for now)
+    └── templates
+        ├── root.html
+        └── collection-subdir
+            ├── index.html
+            └── show.html
+    </pre>
+    -->
+
+      <!-- 
+      ** NOTES **
+      The following is a demonstration of various field types.
+      Uncomment sections to see how the templates render the CMS content.
+      -->
+
+      <!-- 
+      ** MULTISELECT FIELD **
+      -->
+
+      <!--
+      <section class="page-content">
+        <h2>Who Uses Airship?</h2>
+        <ul class="proficiencies">
+          {{#each fields.example_multiselect}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </section>
+      -->
+      
+      <!-- 
+      ** "CUSTOM" SETTINGS **
+      Example of using a handlebars #if conditional based on whether a the "Show Featured Project" checkbox field is checked. 
+      -->
+      
+      <!-- 
+      {{#if fields.show_featured_project_example}}
+        <section class="featured_project">
+          <h2>Featured Project</h2>
+          {{#each fields.featured_project_example}}
+            <a class="featured_project" href="{{url}}" target="_blank">
+              <img src="{{subtitle}}" alt="{{title}}">
+              <h3>{{title}}</h3>
+              <p>{{caption}}</p>
+            </a>
+          {{/each}}
+        </section>
+      {{/if}}
+      -->
+      
+      <!-- 
+      ** RELATED AEROSTATS **
+      You can relate one or more items in a collection to a page or item another collection using "related aerostats". In this example, each item is a post in the "Articles" collection.
+      -->
+
+      <!--
+      <section class="related_articles">
+      <h2>Related Articles</h2>
+        <ul>
+          {{#each related_items.related_items_example}}
+            <li class="article">
+              <a href="#">
+                <h3>{{fields.header}}</h3>
+                <p>{{fields.short_description}} ({{slug}})</p>
+              </a>
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+      -->
+
+      <!-- 
+      ** HELP **
+      Render {{{help}}} to see what properties are accessible on any template.
+      -->
+
+      <!--{{{help}}}-->
+
+      <!--
+      ** COLLECTION RENDERING **
+      For documentation on how to render the example "articles" collection, refer to https://airshipcms.io/documentation.
+      -->
+
+    </div>
