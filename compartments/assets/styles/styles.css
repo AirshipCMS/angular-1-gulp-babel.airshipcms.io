@@ -1,241 +1,145 @@
-/* Delete contents and replace with your own styles! */
+.box {
+  background-color: #D7E3E6;
+  color: #67777B;
+  font-weight: bold;
+}
 
-    /* CSS Reset */
+nav {
+  margin: 20px;
+  padding: 0px;
+  border-bottom: 1px solid #E0E9EB;
+}
 
-    html, body, div, span, applet, object, iframe,
-    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-    a, abbr, acronym, address, big, cite, code,
-    del, dfn, em, img, ins, kbd, q, s, samp,
-    small, strike, strong, sub, sup, tt, var,
-    b, u, i, center,
-    dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td,
-    article, aside, canvas, details, embed, 
-    figure, figcaption, footer, header, hgroup, 
-    menu, nav, output, ruby, section, summary,
-    time, mark, audio, video {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      font-size: 100%;
-      font: inherit;
-      vertical-align: baseline;
-    }
-    /* HTML5 display-role reset for older browsers */
-    article, aside, details, figcaption, figure, 
-    footer, header, hgroup, menu, nav, section {
-      display: block;
-    }
-    body {
-      line-height: 1;
-    }
-    ol, ul {
-      list-style: none;
-    }
-    blockquote, q {
-      quotes: none;
-    }
-    blockquote:before, blockquote:after,
-    q:before, q:after {
-      content: "";
-      content: none;
-    }
-    table {
-      border-collapse: collapse;
-      border-spacing: 0;
-    }
+.github {
+  position: absolute;
+  right: 50px;
+  top: 5px;
+}
 
-    /* Default Styles */
+.nav-toggle {
+  height: 2rem;
+  position: absolute;
+  right: 0;
+  top: 15px;
+}
 
-    body{
-      background-color: #FAFAFA;
-      padding: 15px 20px 30px;
-    }
+.nav-title {
+  color: #C0002C;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+}
 
-    @media only screen and (min-width: 600px){
-      body{
-        padding: 35px 40px 50px;
-        max-width: 800px;
-        margin: auto;
-      }
-    }
+.nav-title:hover {
+  color: #C0002C;
+}
 
-    h1, h2, h3, h4, h5, h6{
-      font-family: "Helvetica Neue", "Helvetica", sans-serif;
-      color: #617074;
-    }
+.body {
+  color: #8A9A9E;
+}
+.body h1,
+.body h2 {
+  color: #C0002C;
+}
 
-    h1{
-      font-size: 36px;
-      line-height: 48px;
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
+/*SETUP*/
+.container {
+  max-width: 960px;
+  letter-spacing: .5px;
+  line-height: 20px;
+  padding: 20px;
+}
 
-    @media only screen and (min-width: 600px){
-      h1{
-        font-size: 56px;
-        line-height: 64px;
-      }
-    }
+.container p {
+  margin-top: 30px;
+}
 
-    h2{
-      font-size: 26px;
-      line-height: 38px;
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
+.summary {
+  text-align: center;
+  background: #C2002E;
+  color: #FFFFFF;
+  max-width: 960px;
+  border-radius: 5px;
 
-    @media only screen and (min-width: 600px){
-      h2{
-        font-size: 32px;
-        line-height: 42px;
-      }
-    }
+  /*desktop*/
+  padding: 20px;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
 
-    h3{
-      font-size: 18px;
-      line-height: 26px;
-      font-weight: 300;
-      margin-bottom: 5px;
-    }
+#airship-logo g,
+#airship-logo path {
+  fill: #FF8BA9;
+}
 
-    @media only screen and (min-width: 600px){
-      h3{
-        font-size: 24px;
-        line-height: 36px;
-      }
-    }
+.summary .title {
+  color: #FFFFFF;
+  margin: 20px;
+}
 
-    p, ul, ol, li, a{
-      font-family: "Helvetica Neue", "Helvetica", sans-serif;
-      font-size: 15px;
-      line-height: 22px;
-      color: #8A9A9E;
-    }
+/*ELEMENTS*/
 
-    a{
-      text-decoration: none;
-      color: #8A9A9E;
-      border-bottom: 1px dashed #8A9A9E;
-    }
+.image {
+  background-color: #D7E3E6;
+  padding: 50px;
+}
 
-    a:hover{
-      color: #8A9A9E;
-    }
+.card p {
+  margin: 0;
+}
 
-    ul, ol{
-      margin-bottom: 20px;
-    }
+/*ELEMENT*/
 
-    p{
-      margin-bottom: 20px;
-    }
+.element-details,
+.element-detail-image {
+  display: inline-block;
+  vertical-align: top;
+}
 
-    ul li{
-      list-style-type: disc;
-      margin-left: 18px;
-    }
+.element {
+  text-align: center;
+}
 
-    ul.setup-instructions li{
-      margin-bottom: 15px;
-    }
+.element-detail-image {
+  width: 100%;
+}
 
-    h2 + ul{
-      margin-top: -10px;
-    }
+.element-details {
+  padding: 20px;
+  color: #8A9A9E;
+}
 
-    a.featured_project{
-      border: 1px solid #C5CFD1;
-      display: block;
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: all 0.2s ease;
-    }
+.element-details h4,
+.element-details h1 {
+  color: #8A9A9E;
+}
 
-    a.featured_project h3{
-      text-align: center;
-    }
+@media only screen  and (min-width : 769px) {
+  .summary {
+    padding: 100px;
+    font-size: 20px;
+  }
 
-    a.featured_project p{
-      margin-bottom: 0;
-      text-align: center;
-    }
+  nav {
+    border: none;
+  }
 
-    a.featured_project:hover{
-      opacity: 0.7;
-      transition: all 0.2s ease;
-    }
+  .element {
+    text-align: left;
+  }
 
-    /* Example of "Settings" controlled by fields. */
+  .element-detail-image {
+    width: auto;
+  }
 
-    /* GREY THEME */
-    .grey-theme h1{
-      color: #617074;
-    }
+  .nav-right {
+    height: 20px;
+    overflow: hidden;
+  }
 
-    .grey-theme h2{
-      color: #7FCFD3;
-    }
-
-    .grey-theme h3{
-      color: #8A9A9E;
-    }
-
-    /* ORANGE THEME */
-    .orange-theme h1{
-      color: #E88823;
-    }
-
-    .orange-theme h2{
-      color: #617074;
-    }
-
-    .orange-theme h3{
-      color: #7FCFD3;
-    }
-
-    /* TEAL THEME */
-    .teal-theme h1{
-      color: #7FCFD3;
-    }
-
-    .teal-theme h2{
-      color: #617074;
-    }
-
-    .teal-theme h3{
-      color: #7FCFD3;
-    }
-
-    code{
-      font-family: "Courier Neue", "Courier", monospace;
-      color: #95A8AD;
-      background-color: #2D3638; 
-      padding: 8px 10px;
-      display: inline-block;
-      border-radius: 2px;
-      margin-top: 5px;
-      margin-bottom: 10px;
-    }
-
-    .code{
-      font-family: "Courier Neue", "Courier", monospace;
-      color: #C5D5D9;
-      background-color: #566366; 
-      padding: 4px 6px;
-      display: inline;
-      border-radius: 2px;
-    }
-
-    pre{
-      font-family: "Courier Neue", "Courier", monospace;
-      color: #95A8AD;
-      background-color: #2D3638; 
-      padding: 8px 10px;
-      display: block;
-      border-radius: 2px;
-      margin-top: 5px;
-      margin-bottom: 10px;
-    }
+  .github {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+}

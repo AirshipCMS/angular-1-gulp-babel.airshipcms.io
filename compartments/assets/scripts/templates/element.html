@@ -1,0 +1,32 @@
+<nav class="nav">
+  <div class="container">
+    <a class="nav-title title is-tab" href='/'>Angular 1.x + Gulp + Babel + Airship CMS</a>
+    <div class="nav-right nav-menu" id="nav-menu">
+      <a class="nav-item" href='/'>Setup</a>
+      <a class="nav-item" href='/styling'>Styling</a>
+      <a class="nav-item" href='/airship-schema'>Airship Schema</a>
+      <a class="nav-item" href='/angular-tutorial'>Angular Tutorial</a>
+      <a class="nav-item active" href='/elements'>Elements</a>
+    </div>
+    <a class="nav-item is-tab github" href=""><img src="/assets/media/github-icon.svg"></a>
+    <span class="nav-toggle" id="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    </div>
+  </div>
+</nav>
+<div class='container'>
+	<div class='element'>
+		<figure class="image element-detail-image">
+          	<img src="{{ element.image.value[0].url }}" alt="{{ element.value[0].file_name }}">
+        </figure>
+        <div class='element-details content'>
+        	<h1>{{ element.name.value }}</h1>
+        	<h4>#{{ element.sorting_position + 1 }}</h4>
+        	<p>{{ element.description.value }}</p>
+        </div>
+	</div>
+</div>
+<script src="assets/scripts/nav.js"></script>
