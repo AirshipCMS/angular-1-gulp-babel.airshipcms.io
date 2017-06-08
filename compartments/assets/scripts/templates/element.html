@@ -18,15 +18,17 @@
   </div>
 </nav>
 <div class='container'>
-	<div class='element'>
-		<figure class="image element-detail-image">
-          	<img src="{{ element.image.value[0].url }}" alt="{{ element.value[0].file_name }}">
-        </figure>
-        <div class='element-details content'>
-        	<h1>{{ element.name.value }}</h1>
-        	<h4>#{{ element.sorting_position + 1 }}</h4>
-        	<p>{{ element.description.value }}</p>
-        </div>
-	</div>
+  <div class='element columns'>
+    <div class='column is-one-quarter'>
+      <figure class="image element-detail-image">
+        <img src="{{ element.image.value[0].url }}" alt="{{ element.value[0].file_name }}">
+      </figure>
+    </div>
+    <div class='element-details content column auto'>
+      <h1>{{ element.name.value }}</h1>
+      <h4>#{{ element.sorting_position + 1 }}</h4>
+      <p>{{ element.description.value }}</p>
+    </div>
+  </div>
 </div>
 <script src="assets/scripts/nav.js"></script>
