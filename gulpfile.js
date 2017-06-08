@@ -3,16 +3,14 @@ var gulp = require('gulp'),
   sass = require('gulp-sass');
   autoprefixer = require('gulp-autoprefixer');
 
-gulp.task('js', ["es6"],function() {
-  return gulp.src("src/app.js")
-    .pipe(gulp.dest("compartments/assets/scripts"));
+gulp.task('js', function() {
+  gulp.src('src/app.js')
+    .pipe(babel({
+      presets: ['env']
+    }))
+    .pipe(gulp.dest('compartments/assets/scripts'));
 });
 
-gulp.task("es6",function() {
-  return gulp.src("src/**/*.js")
-    .pipe(babel())
-    .pipe(gulp.dest("compartments/assets/scripts"));
-});
 
 gulp.task('sass', function () {
 

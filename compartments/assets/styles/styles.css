@@ -1,7 +1,28 @@
-.box {
-  background-color: #D7E3E6;
-  color: #67777B;
-  font-weight: bold; }
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
+body, button, input, select, textarea {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif; }
+
+.body p {
+  margin-top: 0; }
+
+.code {
+  background-color: #c3d2d6;
+  color: #313638;
+  font-family: "Inconsolata", "Consolas", "Courier Neue", "Courier", monospace;
+  padding: 2px 4px;
+  border-radius: 2px; }
+
+.content pre,
+p.fake-code {
+  background-color: whitesmoke;
+  color: #313638;
+  font-family: "Inconsolata", "Consolas", "Courier Neue", "Courier", monospace;
+  border-radius: 2px;
+  padding: 1.25em 1.5em;
+  white-space: pre;
+  word-wrap: normal;
+  font-size: 14px; }
 
 nav {
   margin: 20px;
@@ -79,7 +100,7 @@ nav {
 
 /*ELEMENTS*/
 .image {
-  background-color: #D7E3E6;
+  background-color: #C0002C;
   padding: 50px; }
 
 .card p {
@@ -110,3 +131,7 @@ nav {
 .element-details h4,
 .element-details h1 {
   color: #8A9A9E; }
+
+@media screen and (min-width: 1000px) {
+  .container {
+    margin-bottom: 60px; } }
