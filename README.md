@@ -257,4 +257,4 @@ The structure is same as Page Fields.
   2. In the root of your project, run `airship launch`
   3. This will deploy your app to `yoursite.airshipcms.io`.
 
-You can view more info on launching your Airship project [here]()
+You can view more info on launching your Airship project [here](http://airshipcms.io/documentation/view/airship-cli-commands)
