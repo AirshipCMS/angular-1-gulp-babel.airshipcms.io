@@ -71,7 +71,7 @@ nav {
 /*SETUP*/
 .container {
   max-width: 960px;
-  letter-spacing: .5px;
+  letter-spacing: 0;
   line-height: 20px;
   padding: 20px; }
 
