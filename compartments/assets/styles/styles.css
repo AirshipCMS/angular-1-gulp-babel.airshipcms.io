@@ -6,6 +6,10 @@ body, button, input, select, textarea {
 .body p {
   margin-top: 0; }
 
+.has-text-centered {
+  font-style: italic;
+  margin-bottom: 20px; }
+
 .code {
   background-color: #c3d2d6;
   color: #313638;
