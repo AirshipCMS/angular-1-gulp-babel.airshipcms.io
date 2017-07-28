@@ -99,6 +99,7 @@
             break;
         }
       });
+      loadPrism();
     }).catch(function (err) {
       throw err;
     });
@@ -129,6 +130,7 @@
             break;
         }
       });
+      loadPrism();
     }).catch(function (err) {
       throw err;
     });
