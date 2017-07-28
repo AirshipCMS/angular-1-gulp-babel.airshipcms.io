@@ -8,8 +8,10 @@ Add the angular and angular-route scripts.
 Install gulp, gulp-babel, babel-preset-env and concurrently.
 
 ```
-yarn add gulp gulp-babel babel-preset-env concurrently
+yarn add gulp gulp-sass gulp-autoprefixer babel-preset-env concurrently
 ```
+
+`gulp-sass` and `gulp-autoprefixer` were used to compile Sass to CSS. Checkout Styling for more info.
 
 ## 2. Add Gulp File
 Create a `gulpfile.js` file at the root of your project.
@@ -18,7 +20,9 @@ Set the gulp task's destination to `compartments/assets/scripts`.
 
 ```
 var gulp = require('gulp'),
-babel = require('gulp-babel')
+  babel = require('gulp-babel'),
+  sass = require('gulp-sass');
+  autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('js', function() {
   gulp.src('src/app.js')
@@ -26,13 +30,26 @@ gulp.task('js', function() {
       presets: ['env']
     }))
     .pipe(gulp.dest('compartments/assets/scripts'));
-  });
+});
+
+
+gulp.task('sass', function () {
+
+  return gulp.src('./scss/**/*.scss')
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./compartments/assets/styles'));
+});
 
 gulp.task('watch', function () {
+  gulp.watch('./scss/**/*.scss', ['sass']);
   gulp.watch('src/*', ['js']);
 });
 
-gulp.task('default', ['watch', 'js']);
+gulp.task('default', ['watch', 'sass', 'js']);
 ```
 
 ## 3. Add Serve Script to package.json
@@ -44,12 +61,6 @@ So you don't have to run your airship server and gulp in separate windows, add t
   "start": "concurrently --kill-others \"airship serve\" \"gulp\""
 }
 ```
-
-Run `yarn start` in your terminal
-
-This will run your airship server and gulp concurrently.
-
-Your app will be served on `localhost:9001`
 
 ## 4. Initialize Angular App
 
@@ -200,10 +211,8 @@ Template:
 
 ## 7. Run the Project
 
-In your terminal, run:
-```
-airship serve
-```
+Run `yarn start` in your terminal
 
-This command will start your airship server.
-Open your browser and navigate to `localhost:9001`.
+This will run your airship server and gulp concurrently.
+
+Your app will be served on `localhost:9001`.

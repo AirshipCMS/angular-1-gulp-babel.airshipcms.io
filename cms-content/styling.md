@@ -19,12 +19,14 @@ This demonstrates how to compile Sass with Gulp
 
 ## 1. Install Dependencies
 ```
-yarn add gulp gulp-sass gulp-autoprefixer
+yarn add gulp gulp-sass gulp-autoprefixer babel-preset-env concurrently
 ```
 or
 ```
-npm i gulp gulp-sass gulp-autoprefixer
+npm i gulp gulp-sass gulp-autoprefixer babel-preset-env concurrently
 ```
+
+`babel-preset-env` was used to compile JavaScript files. Check out Angular Tutorial for more info.
 
 ## 2. Add Gulp File
 Add your `gulpfile.js` to the root of your project.
@@ -37,8 +39,18 @@ Example gulpfile:
 
 ```
 var gulp = require('gulp'),
+  babel = require('gulp-babel'),
   sass = require('gulp-sass');
   autoprefixer = require('gulp-autoprefixer');
+
+gulp.task('js', function() {
+  gulp.src('src/app.js')
+    .pipe(babel({
+      presets: ['env']
+    }))
+    .pipe(gulp.dest('compartments/assets/scripts'));
+});
+
 
 gulp.task('sass', function () {
 
@@ -53,17 +65,26 @@ gulp.task('sass', function () {
 
 gulp.task('watch', function () {
   gulp.watch('./scss/**/*.scss', ['sass']);
+  gulp.watch('src/*', ['js']);
 });
 
-gulp.task('default', ['watch', 'sass']);
+gulp.task('default', ['watch', 'sass', 'js']);
 ```
 
-## 3. Run the Project
+## 4. Add Serve Script to package.json
 
-In another terminal window, run:
+So you don't have to run your airship server and gulp in separate windows, add this to your `package.json`:
+
 ```
-airship serve
+"scripts": {
+  "start": "concurrently --kill-others \"airship serve\" \"gulp\""
+}
 ```
 
-This command will start your airship server.
-Open your browser and navigate to `localhost:9001`.
+## 5. Compile
+
+Run `yarn start` in your terminal
+
+This will run your airship server and gulp concurrently.
+
+Your app will be served on `localhost:9001`.
