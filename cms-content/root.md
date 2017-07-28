@@ -9,7 +9,7 @@ You can view the demo at [http://angular-1-gulp-babel.airshipcms.io](http://angu
 - [Angular 1.6.4](https://angularjs.org): a JavaScript MVW framework.
 - [angular-route](https://www.npmjs.com/package/angular-route): used for routing.
 - [Gulp](https://gulpjs.com/) used for compiling JavaScript and Sass.
-- [Babel](https://babeljs.io/) a JavaScript comiler
+- [Babel](https://babeljs.io/) a JavaScript compiler
 - [Bulma](http://bulma.io/): a modern CSS framework.
 
 # Project Setup
