@@ -71,7 +71,7 @@ gulp.task('watch', function () {
 gulp.task('default', ['watch', 'sass', 'js']);
 ```
 
-## 4. Add Serve Script to package.json
+## 3. Add Serve Script to package.json
 
 So you don't have to run your airship server and gulp in separate windows, add this to your `package.json`:
 
@@ -81,7 +81,7 @@ So you don't have to run your airship server and gulp in separate windows, add t
 }
 ```
 
-## 5. Compile
+## 4. Compile
 
 Run `yarn start` in your terminal
 
