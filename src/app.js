@@ -69,19 +69,22 @@
       "$http",
       "$sce",
       function($scope, $http, $sce) {
-        $http.get("/api/pages/__root__").then(function(res) {
-          $scope.title = res.data.name;
-          res.data.fields.forEach(function(field) {
-            switch (field.variable_name) {
-              case "body":
-                $scope[field.variable_name] = $sce.trustAsHtml(field.value);
-                break;
-              default:
-                $scope[field.variable_name] = field.value;
-                break;
-            }
-          });
-        });
+        $http
+          .get("/api/pages/__root__")
+          .then(function(res) {
+            $scope.title = res.data.name;
+            res.data.fields.forEach(function(field) {
+              switch (field.variable_name) {
+                case "body":
+                  $scope[field.variable_name] = $sce.trustAsHtml(field.value);
+                  break;
+                default:
+                  $scope[field.variable_name] = field.value;
+                  break;
+              }
+            });
+          })
+          .catch(console.error);
       }
     ])
     .controller("ElementsController", [
@@ -99,7 +102,8 @@
               });
               return element;
             });
-          });
+          })
+          .catch(console.error);
       }
     ])
     .controller("ElementController", [
@@ -115,9 +119,7 @@
               $scope.element[field.variable_name] = { value: field.value };
             });
           })
-          .catch(function(err) {
-            throw err;
-          });
+          .catch(console.error);
       }
     ])
     .controller("StylingController", [
@@ -140,9 +142,7 @@
             });
             loadPrism();
           })
-          .catch(function(err) {
-            throw err;
-          });
+          .catch(console.error);
       }
     ])
     .controller("AirshipSchemaController", [
@@ -164,9 +164,7 @@
               }
             });
           })
-          .catch(function(err) {
-            throw err;
-          });
+          .catch(console.error);
       }
     ])
     .controller("TutorialController", [
@@ -189,9 +187,7 @@
             });
             loadPrism();
           })
-          .catch(function(err) {
-            throw err;
-          });
+          .catch(console.error);
       }
     ]);
 })(window.angular);
