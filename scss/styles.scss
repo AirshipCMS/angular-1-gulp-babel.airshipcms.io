@@ -141,6 +141,10 @@ nav {
 
 /*ELEMENTS*/
 
+.columns {
+  flex-flow: row wrap;
+}
+
 .image {
   background-color: $red;
   padding: 50px;

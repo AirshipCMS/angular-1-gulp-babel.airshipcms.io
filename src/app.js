@@ -73,16 +73,24 @@
           .get("/api/pages/__root__")
           .then(function(res) {
             $scope.title = res.data.name;
-            res.data.fields.forEach(function(field) {
-              switch (field.variable_name) {
-                case "body":
-                  $scope[field.variable_name] = $sce.trustAsHtml(field.value);
-                  break;
-                default:
-                  $scope[field.variable_name] = field.value;
-                  break;
-              }
-            });
+            // handle specific field behaviors
+            Object.assign(
+              $scope,
+              res.data.fields
+                .map(function(field) {
+                  switch (field.variable_name) {
+                    case "body": // do not html escape 'body' field
+                      return {
+                        [field.variable_name]: $sce.trustAsHtml(field.value)
+                      };
+                    default:
+                      return { [field.variable_name]: field.value };
+                  }
+                })
+                .reduce(function(fields, field) {
+                  return Object.assign(fields, field);
+                }, {})
+            );
           })
           .catch(console.error);
       }
@@ -97,9 +105,16 @@
           )
           .then(function(res) {
             $scope.elements = res.data.map(function(element) {
-              element.fields.forEach(function(field) {
-                element[field.variable_name] = { value: field.value };
-              });
+              Object.assign(
+                element,
+                element.fields
+                  .map(function(field) {
+                    return { [field.variable_name]: field.value };
+                  })
+                  .reduce(function(fields, field) {
+                    return Object.assign(fields, field);
+                  }, {})
+              );
               return element;
             });
           })
@@ -114,10 +129,17 @@
         $http
           .get("/api/aerostats/" + $route.current.params.id)
           .then(function(res) {
-            $scope.element = res.data;
-            $scope.element.fields.forEach(function(field) {
-              $scope.element[field.variable_name] = { value: field.value };
-            });
+            $scope.element = {};
+            Object.assign(
+              $scope.element,
+              res.data.fields
+                .map(function(field) {
+                  return { [field.variable_name]: field.value };
+                })
+                .reduce(function(fields, field) {
+                  return Object.assign(fields, field);
+                }, {})
+            );
           })
           .catch(console.error);
       }
@@ -130,16 +152,24 @@
         $http
           .get("/api/pages/styling")
           .then(function(res) {
-            res.data.fields.forEach(function(field) {
-              switch (field.variable_name) {
-                case "body":
-                  $scope[field.variable_name] = $sce.trustAsHtml(field.value);
-                  break;
-                default:
-                  $scope[field.variable_name] = field.value;
-                  break;
-              }
-            });
+            // handle specific field behaviors
+            Object.assign(
+              $scope,
+              res.data.fields
+                .map(function(field) {
+                  switch (field.variable_name) {
+                    case "body": // do not html escape 'body' field
+                      return {
+                        [field.variable_name]: $sce.trustAsHtml(field.value)
+                      };
+                    default:
+                      return { [field.variable_name]: field.value };
+                  }
+                })
+                .reduce(function(fields, field) {
+                  return Object.assign(fields, field);
+                }, {})
+            );
             loadPrism();
           })
           .catch(console.error);
@@ -153,16 +183,24 @@
         $http
           .get("/api/pages/airship-schema")
           .then(function(res) {
-            res.data.fields.forEach(function(field) {
-              switch (field.variable_name) {
-                case "body":
-                  $scope[field.variable_name] = $sce.trustAsHtml(field.value);
-                  break;
-                default:
-                  $scope[field.variable_name] = field.value;
-                  break;
-              }
-            });
+            // handle specific field behaviors
+            Object.assign(
+              $scope,
+              res.data.fields
+                .map(function(field) {
+                  switch (field.variable_name) {
+                    case "body": // do not html escape 'body' field
+                      return {
+                        [field.variable_name]: $sce.trustAsHtml(field.value)
+                      };
+                    default:
+                      return { [field.variable_name]: field.value };
+                  }
+                })
+                .reduce(function(fields, field) {
+                  return Object.assign(fields, field);
+                }, {})
+            );
           })
           .catch(console.error);
       }
@@ -175,16 +213,24 @@
         $http
           .get("/api/pages/angular-tutorial")
           .then(function(res) {
-            res.data.fields.forEach(function(field) {
-              switch (field.variable_name) {
-                case "body":
-                  $scope[field.variable_name] = $sce.trustAsHtml(field.value);
-                  break;
-                default:
-                  $scope[field.variable_name] = field.value;
-                  break;
-              }
-            });
+            // handle specific field behaviors
+            Object.assign(
+              $scope,
+              res.data.fields
+                .map(function(field) {
+                  switch (field.variable_name) {
+                    case "body": // do not html escape 'body' field
+                      return {
+                        [field.variable_name]: $sce.trustAsHtml(field.value)
+                      };
+                    default:
+                      return { [field.variable_name]: field.value };
+                  }
+                })
+                .reduce(function(fields, field) {
+                  return Object.assign(fields, field);
+                }, {})
+            );
             loadPrism();
           })
           .catch(console.error);
