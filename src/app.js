@@ -34,50 +34,38 @@
           templateUrl: "/assets/scripts/templates/404.html"
         });
     })
-    .directive("navBar", function() {
-      function link(scope) {
-        scope.active = window.location.pathname.split("/")[1];
-      }
-
-      return {
-        templateUrl: "/assets/scripts/templates/nav.html",
-        link: link
-      };
-    })
-    .directive("navGithub", function() {
-      return {
-        templateUrl: "/assets/scripts/templates/nav-github.html"
-      };
-    })
-    .directive("navToggle", function() {
-      function link(scope, element, attrs) {
+    .directive("navBar", () => ({
+      templateUrl: "/assets/scripts/templates/nav.html",
+      link: scope => scope.active = window.location.pathname.split("/").pop()
+    }))
+    .directive("navGithub", () => ({
+      templateUrl: "/assets/scripts/templates/nav-github.html"
+    }))
+    .directive("navToggle", () => ({
+      link: (scope, element, attrs) => {
         var $menu = $("#nav-menu");
 
-        element.click(function() {
+        element.click(() => {
           $(this).toggleClass("is-active");
           $menu.toggleClass("is-active");
         });
-      }
-
-      return {
-        link: link,
-        templateUrl: "/assets/scripts/templates/nav-toggle.html"
-      };
-    })
+      },
+      templateUrl: "/assets/scripts/templates/nav-toggle.html"
+    }))
     .controller("SetupController", [
       "$scope",
       "$http",
       "$sce",
-      function($scope, $http, $sce) {
+      ($scope, $http, $sce) => {
         $http
           .get("/api/pages/__root__")
-          .then(function(res) {
+          .then((res) => {
             $scope.title = res.data.name;
             // handle specific field behaviors
             Object.assign(
               $scope,
               res.data.fields
-                .map(function(field) {
+                .map((field) => {
                   switch (field.variable_name) {
                     case "body": // do not html escape 'body' field
                       return {
@@ -87,9 +75,7 @@
                       return { [field.variable_name]: field.value };
                   }
                 })
-                .reduce(function(fields, field) {
-                  return Object.assign(fields, field);
-                }, {})
+                .reduce((fields, field) => Object.assign(fields, field), {})
             );
           })
           .catch(console.error);
@@ -98,22 +84,20 @@
     .controller("ElementsController", [
       "$scope",
       "$http",
-      function($scope, $http) {
+      ($scope, $http) => {
         $http
           .get(
             "/api/aerostat_collection/elements?limit=20&sort=sorting_position"
           )
-          .then(function(res) {
-            $scope.elements = res.data.map(function(element) {
+          .then((res) => {
+            $scope.elements = res.data.map((element) => {
               Object.assign(
                 element,
                 element.fields
-                  .map(function(field) {
+                  .map((field) => {
                     return { [field.variable_name]: field.value };
                   })
-                  .reduce(function(fields, field) {
-                    return Object.assign(fields, field);
-                  }, {})
+                  .reduce((fields, field) => Object.assign(fields, field), {})
               );
               return element;
             });
@@ -125,20 +109,18 @@
       "$scope",
       "$http",
       "$route",
-      function($scope, $http, $route) {
+      ($scope, $http, $route) => {
         $http
           .get("/api/aerostats/" + $route.current.params.id)
-          .then(function(res) {
+          .then((res) => {
             $scope.element = {};
             Object.assign(
               $scope.element,
               res.data.fields
-                .map(function(field) {
-                  return { [field.variable_name]: field.value };
-                })
-                .reduce(function(fields, field) {
-                  return Object.assign(fields, field);
-                }, {})
+                .map((field) => (
+                  { [field.variable_name]: field.value }
+                ))
+                .reduce((fields, field)  => Object.assign(fields, field), {})
             );
           })
           .catch(console.error);
@@ -148,15 +130,15 @@
       "$scope",
       "$http",
       "$sce",
-      function($scope, $http, $sce) {
+      ($scope, $http, $sce) => {
         $http
           .get("/api/pages/styling")
-          .then(function(res) {
+          .then((res) => {
             // handle specific field behaviors
             Object.assign(
               $scope,
               res.data.fields
-                .map(function(field) {
+                .map((field) => {
                   switch (field.variable_name) {
                     case "body": // do not html escape 'body' field
                       return {
@@ -166,9 +148,7 @@
                       return { [field.variable_name]: field.value };
                   }
                 })
-                .reduce(function(fields, field) {
-                  return Object.assign(fields, field);
-                }, {})
+                .reduce((fields, field) => Object.assign(fields, field), {})
             );
             loadPrism();
           })
@@ -179,15 +159,15 @@
       "$scope",
       "$http",
       "$sce",
-      function($scope, $http, $sce) {
+      ($scope, $http, $sce) => {
         $http
           .get("/api/pages/airship-schema")
-          .then(function(res) {
+          .then((res) => {
             // handle specific field behaviors
             Object.assign(
               $scope,
               res.data.fields
-                .map(function(field) {
+                .map((field)  => {
                   switch (field.variable_name) {
                     case "body": // do not html escape 'body' field
                       return {
@@ -197,9 +177,7 @@
                       return { [field.variable_name]: field.value };
                   }
                 })
-                .reduce(function(fields, field) {
-                  return Object.assign(fields, field);
-                }, {})
+                .reduce((fields, field) => Object.assign(fields, field), {})
             );
           })
           .catch(console.error);
@@ -209,15 +187,15 @@
       "$scope",
       "$http",
       "$sce",
-      function($scope, $http, $sce) {
+      ($scope, $http, $sce) => {
         $http
           .get("/api/pages/angular-tutorial")
-          .then(function(res) {
+          .then((res) => {
             // handle specific field behaviors
             Object.assign(
               $scope,
               res.data.fields
-                .map(function(field) {
+                .map((field)  => {
                   switch (field.variable_name) {
                     case "body": // do not html escape 'body' field
                       return {
@@ -227,13 +205,11 @@
                       return { [field.variable_name]: field.value };
                   }
                 })
-                .reduce(function(fields, field) {
-                  return Object.assign(fields, field);
-                }, {})
+                .reduce((fields, field) => Object.assign(fields, field), {})
             );
             loadPrism();
           })
           .catch(console.error);
       }
-    ]);
+    ])
 })(window.angular);

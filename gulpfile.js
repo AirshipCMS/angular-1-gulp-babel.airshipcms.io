@@ -6,7 +6,8 @@ var gulp = require('gulp'),
 gulp.task('js', function() {
   gulp.src('src/app.js')
     .pipe(babel({
-      presets: ['env']
+      presets: ['env'],
+      plugins: ["transform-object-assign"]
     }))
     .pipe(gulp.dest('compartments/assets/scripts'));
 });
