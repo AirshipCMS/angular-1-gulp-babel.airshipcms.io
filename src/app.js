@@ -36,7 +36,7 @@
     })
     .directive("navBar", () => ({
       templateUrl: "/assets/scripts/templates/nav.html",
-      link: scope => scope.active = window.location.pathname.split("/").pop()
+      link: scope => (scope.active = window.location.pathname.split("/").pop())
     }))
     .directive("navGithub", () => ({
       templateUrl: "/assets/scripts/templates/nav-github.html"
@@ -59,13 +59,13 @@
       ($scope, $http, $sce) => {
         $http
           .get("/api/pages/__root__")
-          .then((res) => {
+          .then(res => {
             $scope.title = res.data.name;
             // handle specific field behaviors
             Object.assign(
               $scope,
               res.data.fields
-                .map((field) => {
+                .map(field => {
                   switch (field.variable_name) {
                     case "body": // do not html escape 'body' field
                       return {
@@ -89,12 +89,12 @@
           .get(
             "/api/aerostat_collection/elements?limit=20&sort=sorting_position"
           )
-          .then((res) => {
-            $scope.elements = res.data.map((element) => {
+          .then(res => {
+            $scope.elements = res.data.map(element => {
               Object.assign(
                 element,
                 element.fields
-                  .map((field) => {
+                  .map(field => {
                     return { [field.variable_name]: field.value };
                   })
                   .reduce((fields, field) => Object.assign(fields, field), {})
@@ -112,15 +112,13 @@
       ($scope, $http, $route) => {
         $http
           .get("/api/aerostats/" + $route.current.params.id)
-          .then((res) => {
+          .then(res => {
             $scope.element = {};
             Object.assign(
               $scope.element,
               res.data.fields
-                .map((field) => (
-                  { [field.variable_name]: field.value }
-                ))
-                .reduce((fields, field)  => Object.assign(fields, field), {})
+                .map(field => ({ [field.variable_name]: field.value }))
+                .reduce((fields, field) => Object.assign(fields, field), {})
             );
           })
           .catch(console.error);
@@ -133,12 +131,12 @@
       ($scope, $http, $sce) => {
         $http
           .get("/api/pages/styling")
-          .then((res) => {
+          .then(res => {
             // handle specific field behaviors
             Object.assign(
               $scope,
               res.data.fields
-                .map((field) => {
+                .map(field => {
                   switch (field.variable_name) {
                     case "body": // do not html escape 'body' field
                       return {
@@ -162,12 +160,12 @@
       ($scope, $http, $sce) => {
         $http
           .get("/api/pages/airship-schema")
-          .then((res) => {
+          .then(res => {
             // handle specific field behaviors
             Object.assign(
               $scope,
               res.data.fields
-                .map((field)  => {
+                .map(field => {
                   switch (field.variable_name) {
                     case "body": // do not html escape 'body' field
                       return {
@@ -190,12 +188,12 @@
       ($scope, $http, $sce) => {
         $http
           .get("/api/pages/angular-tutorial")
-          .then((res) => {
+          .then(res => {
             // handle specific field behaviors
             Object.assign(
               $scope,
               res.data.fields
-                .map((field)  => {
+                .map(field => {
                   switch (field.variable_name) {
                     case "body": // do not html escape 'body' field
                       return {
@@ -211,5 +209,5 @@
           })
           .catch(console.error);
       }
-    ])
+    ]);
 })(window.angular);
