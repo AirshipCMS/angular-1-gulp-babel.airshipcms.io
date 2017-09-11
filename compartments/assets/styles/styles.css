@@ -65,6 +65,38 @@ nav {
   .nav-title:hover {
     color: #C0002C; }
 
+.nav > .container {
+  padding: 0; }
+
+@media screen and (min-width: 1000px) {
+  .nav > .container {
+    padding: 20px; } }
+
+a.github-link {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-left: 10px;
+  -webkit-transform: translateY(-2px);
+  transform: translateY(-2px); }
+
+@media screen and (min-width: 769px) {
+  a.github-link {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    margin-left: 0; } }
+
+.container p {
+  line-height: 26px; }
+
+.content h1 {
+  font-size: 2.25em; }
+
+h2 code,
+h3 code,
+h4 code {
+  font-size: 0.8em !important; }
+
 .body {
   color: #8A9A9E; }
 
