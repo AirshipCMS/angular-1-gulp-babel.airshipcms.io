@@ -48,6 +48,7 @@
         element.click(() => {
           $(this).toggleClass("is-active");
           $menu.toggleClass("is-active");
+          $("#nav-toggle").toggleClass("is-active");
         });
       },
       templateUrl: "/assets/scripts/templates/nav-toggle.html"

@@ -52,6 +52,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         element.click(function () {
           $(_this).toggleClass("is-active");
           $menu.toggleClass("is-active");
+          $("#nav-toggle").toggleClass("is-active");
         });
       },
       templateUrl: "/assets/scripts/templates/nav-toggle.html"
